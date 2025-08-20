@@ -4,13 +4,61 @@
 <head>
     <meta charset="UTF-8">
     <title>Reproductor</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #000;
+            /* fondo negro */
+            margin: 0;
+        }
+        
+        #playButton {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: none;
+            background: #FFD700;
+            /* dorado */
+            color: #000;
+            /* negro para el icono */
+            font-size: 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 10px #FFD700;
+            transition: 0.3s;
+        }
+        
+        #playButton:hover {
+            background: #FFC700;
+            /* dorado más brillante al pasar el mouse */
+            box-shadow: 0 0 20px #FFD700;
+        }
+    </style>
 </head>
 
 <body>
-    <audio controls>
-  <source src="audio/Michael Jackson - Remember the Time [Lyrics].mp3" type="audio/mpeg">
-  Tu navegador no soporta audio HTML5.
-</audio>
+    <button id="playButton">▶</button>
+    <audio id="audio" src="audio/Michael Jackson - Remember the Time [Lyrics].mp3"></audio>
+
+    <script>
+        const audio = document.getElementById('audio');
+        const button = document.getElementById('playButton');
+
+        button.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                button.textContent = '⏸';
+            } else {
+                audio.pause();
+                button.textContent = '▶';
+            }
+        });
+    </script>
 </body>
 
 </html>
